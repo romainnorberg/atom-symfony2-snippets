@@ -1,0 +1,16 @@
+'.source.php':
+  'sf2WhereIn':
+    'prefix': 'sf2WhereIn'
+    'body': """
+      $qb = $this->createQueryBuilder('a')
+        ->join('a.categories', 'c')
+        ->addSelect('c')
+      ;
+
+      $qb->where($qb->expr()->in('c.name', $categoryNames));
+
+      return $qb
+        ->getQuery()
+        ->getResult()
+      ;
+    """
